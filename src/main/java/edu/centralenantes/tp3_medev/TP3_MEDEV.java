@@ -1,7 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package edu.centralenantes.tp3_medev;
 
 /**
@@ -13,22 +12,24 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.util.*;
+import java.io.IOException;
+
 public class TP3_MEDEV {
-    
-   private ArrayList<ImagePGM> images;
-   
-   public void writeImage(String filePath, ImagePGM im) {
+
+    private ArrayList<ImagePGM> images;
+
+    public void writeImage(String filePath, ImagePGM im) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
             writer.write("P2"); // 
             writer.newLine();
-            writer.write(im.getComment()); 
+            writer.write(im.getComment());
             writer.newLine();
-            writer.write(im.getWidth() + " " + im.getHeight()); 
+            writer.write(im.getWidth() + " " + im.getHeight());
             writer.newLine();
-            writer.write(im.getMaxValue() + ""); 
+            writer.write(im.getMaxValue() + "");
             writer.newLine();
-            
+
             // 写入图像数据
             for (int i = 0; i < im.getHeight(); i++) {
                 for (int j = 0; j < im.getWidth(); j++) {
@@ -36,25 +37,25 @@ public class TP3_MEDEV {
                 }
                 writer.newLine();
             }
-            
+
             writer.close();
-            System.out.println(  "add a new file at : "+filePath);
+            System.out.println("add a new file at : " + filePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void readImage(String filePath,ImagePGM im) {
+
+    public void readImage(String filePath, ImagePGM im) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
 
-            String format = reader.readLine(); 
-            String comment = reader.readLine(); 
+            String format = reader.readLine();
+            String comment = reader.readLine();
             im.setComment(comment);
-            String[] dimensions = reader.readLine().split(" "); 
+            String[] dimensions = reader.readLine().split(" ");
             im.setWidth(Integer.parseInt(dimensions[0]));
-            im.setHeight( Integer.parseInt(dimensions[1]));
+            im.setHeight(Integer.parseInt(dimensions[1]));
             im.setMaxValue(Integer.parseInt(reader.readLine()));
-
 
             int[][] temp = new int[im.getWidth()][im.getHeight()];
             for (int i = 0; i < im.getHeight(); i++) {
@@ -70,10 +71,20 @@ public class TP3_MEDEV {
         } catch (IOException e) {
             e.printStackTrace();
         }
-  
+
     }
 
-    
-    
-}
+    public static void main(String[] args) {
+        TP3_MEDEV processor = new TP3_MEDEV();
+        ImagePGM image = new ImagePGM();
 
+        String inputFilePath = "C:\\Users\\23031\\Documents\\tp-pgm-team_tp3_ccjz\\image.pgm";
+        String outputFilePath = "C:\\Users\\23031\\Documents\\tp-pgm-team_tp3_ccjz\\outputImage.pgm";
+
+        processor.readImage(inputFilePath, image);
+        System.out.println("Image loaded successfully.");
+        image.to_binary();
+        // image.printHist(); 
+        processor.writeImage(outputFilePath, image);
+        System.out.println("Processed image saved successfully.");
+    }
