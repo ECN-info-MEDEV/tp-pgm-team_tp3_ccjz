@@ -5,8 +5,8 @@
 package edu.centralenantes.tp3_medev;
 
 /**
- *
- * @author 23031
+ * Class for images in bgm
+ * @author chloe and jing
  */
 public class ImagePGM {
     private int height;
@@ -15,6 +15,13 @@ public class ImagePGM {
     private String comment;
     private int[][] value;
 
+    /**
+     *
+     * @param height
+     * @param width
+     * @param maxValue
+     * @param value
+     */
     public ImagePGM(int height, int width, int maxValue, int[][] value) {
         this.height = height;
         this.width = width;
@@ -22,6 +29,9 @@ public class ImagePGM {
         this.value = value;
     }
 
+    /**
+     *
+     */
     public ImagePGM() {
         this.height = 10;
         this.width = 20;
@@ -29,46 +39,81 @@ public class ImagePGM {
         this.value = new int[width][height];
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     *
+     * @param height
+     */
     public void setHeight(int height) {
         this.height = height;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     *
+     * @param width
+     */
     public void setWidth(int width) {
         this.width = width;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMaxValue() {
         return maxValue;
     }
 
+    /**
+     *
+     * @param maxValue
+     */
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;
     }
 
+    /**
+     *
+     * @return
+     */
     public int[][] getValue() {
         return value;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setValue(int[][] value) {
         this.value = value;
     }
- 
+
     public String getComment() {
         return comment;
     }
 
     public void setComment(String comment) {
         this.comment = comment;
-    }   
-
+    }
+    
+    /**
+     *
+     */
     public void printHist(){
         int[] histogram = new int[256]; //init histogram of all possible grey values to all zero
         for (int i = 0; i < height; i++) {
@@ -82,7 +127,10 @@ public class ImagePGM {
             System.out.println("Value "+i+ "has frequency "+histogram[i]);
         }
     }  
-
+    
+    /**
+     *
+     */
     public void to_binary(){
         int treshold = 128;
         for (int i = 0; i < height; i++) {
@@ -95,7 +143,12 @@ public class ImagePGM {
             }
         }       
     }
-
+    
+    /**
+     *
+     * @param im
+     * @return
+     */
     public ImagePGM difference(ImagePGM im){
         ImagePGM diff = new ImagePGM();
         if (this.height==im.height&this.width==im.width){
@@ -117,7 +170,11 @@ public class ImagePGM {
             throw new IllegalArgumentException("Wrong size of the input image.");
         }
     }
-
+    
+    /**
+     *  Increase or decrease the size of an image with a factor of 2 or 1/2
+     * @param factor int : factor to resize the image of size (h,w) to (factor*h, factor*w)
+     */
     public void resize(int factor){
         // Create a new array that is of the desired rescaled size
         if (factor==2){
@@ -145,4 +202,5 @@ public class ImagePGM {
             throw new IllegalArgumentException("Wrong factor to resize the image : only 2 and 0.5 are possible.");
         }
     }
+    
 }
