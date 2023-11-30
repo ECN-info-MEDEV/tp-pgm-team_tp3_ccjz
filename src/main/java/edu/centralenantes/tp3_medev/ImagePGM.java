@@ -12,6 +12,7 @@ public class ImagePGM {
     private int height;
     private int width;
     private int maxValue;
+    private String comment;
     private int[][] value;
 
     public ImagePGM(int height, int width, int maxValue, int[][] value) {
@@ -59,7 +60,14 @@ public class ImagePGM {
     public void setValue(int[][] value) {
         this.value = value;
     }
-    
+ 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }   
     
     
 }
