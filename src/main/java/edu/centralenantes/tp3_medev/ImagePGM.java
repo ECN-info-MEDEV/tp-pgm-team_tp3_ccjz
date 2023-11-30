@@ -68,6 +68,81 @@ public class ImagePGM {
     public void setComment(String comment) {
         this.comment = comment;
     }   
-    
-    
+
+    public void printHist(){
+        int[] histogram = new int[256]; //init histogram of all possible grey values to all zero
+        for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    int p = value[i][j]; //get pixel value
+                    histogram[p]++;
+            }
+        }
+        System.out.println("The histogram of the PGM image is :");
+        for (int i = 0; i < 256; i++) {
+            System.out.println("Value "+i+ "has frequency "+histogram[i]);
+        }
+    }  
+
+    public void to_binary(){
+        int treshold = 128;
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (value[i][j]<treshold) {
+                    value[i][j]=0;
+                } else {
+                    value[i][j]=1;
+                }
+            }
+        }       
+    }
+
+    public ImagePGM difference(ImagePGM im){
+        ImagePGM diff = new ImagePGM();
+        if (this.height==im.height&this.width==im.width){
+            diff.height=im.height;
+            diff.width=im.width;
+            diff.value=new int[height][width];
+            diff.maxValue=0;
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    diff.value[i][j]=this.value[i][j]-im.value[i][j];
+                    if (diff.value[i][j]>diff.maxValue){
+                        diff.maxValue=diff.value[i][j];
+                    }
+                }
+            }
+            return diff;
+        } 
+        else{
+            throw new IllegalArgumentException("Wrong size of the input image.");
+        }
+    }
+
+    public void resize(int factor){
+        // Create a new array that is of the desired rescaled size
+        if (factor==2){
+            int[][] scaledImage = new int[height*factor][width*factor];
+            // Scale the original array into the new array
+            for (int i = 0; i < height; ++i) {
+                for (int j = 0; j < width; ++j) {
+                    scaledImage[(i*2)][(j*2)] = value[i][j];
+                    scaledImage[(i*2) + 1][(j*2)] = value[i][j];
+                    scaledImage[(i*2)][(j*2) + 1] = value[i][j];
+                    scaledImage[(i*2) + 1][(j*2) + 1] = value[i][j];
+                }
+            }
+        }
+        else if (factor==0.5){
+           int[][] scaledImage = new int[height*factor][width*factor];
+            // Scale the original array into the new array
+            for (int i = 0; i < height; i+=2) {
+                for (int j = 0; j < width; j+=2) {
+                    scaledImage[i/2][j/2] = value[i][j];
+                }
+            } 
+        }
+        else {
+            throw new IllegalArgumentException("Wrong factor to resize the image : only 2 and 0.5 are possible.");
+        }
+    }
 }
