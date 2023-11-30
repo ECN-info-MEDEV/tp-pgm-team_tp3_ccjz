@@ -5,7 +5,7 @@ package edu.centralenantes.tp3_medev;
 
 /**
  *
- * @author chloe
+ * @author chloe et jing
  */
 import java.io.*;
 import javax.imageio.ImageIO;
@@ -30,7 +30,6 @@ public class TP3_MEDEV {
             writer.write(im.getMaxValue() + "");
             writer.newLine();
 
-            // 写入图像数据
             for (int i = 0; i < im.getHeight(); i++) {
                 for (int j = 0; j < im.getWidth(); j++) {
                     writer.write(im.getValue()[i][j] + " ");
