@@ -6,7 +6,7 @@ package edu.centralenantes.tp3_medev;
 
 /**
  *
- * @author 23031
+ * @author jing et chloe
  */
 public class IMAGE_GUI extends javax.swing.JFrame {
     private TP3_MEDEV processor;
