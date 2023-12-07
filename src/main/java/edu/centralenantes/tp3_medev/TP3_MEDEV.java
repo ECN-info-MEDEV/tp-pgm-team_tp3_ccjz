@@ -5,7 +5,7 @@ package edu.centralenantes.tp3_medev;
 
 /**
  *
- * @author chloe
+ * @author chloe et jing
  */
 import java.io.*;
 import javax.imageio.ImageIO;
