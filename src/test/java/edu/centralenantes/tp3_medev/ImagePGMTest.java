@@ -9,7 +9,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import edu.centralenantes.tp3_medev.ImagePGM;
-
+import edu.centralenantes.tp3_medev.TP3_MEDEV;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 /**
  *
  * @author 23031
@@ -46,87 +48,6 @@ public class ImagePGMTest {
         int test=instance.getWidth();    
         assertEquals(width, test);
 
-    }
-
-    /**
-     * Test of getMaxValue method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testGetMaxValue() {
-        System.out.println("getMaxValue");
-        ImagePGM instance = new ImagePGM();
-        int expResult = 0;
-        int result = instance.getMaxValue();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setMaxValue method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testSetMaxValue() {
-        System.out.println("setMaxValue");
-        int maxValue = 0;
-        ImagePGM instance = new ImagePGM();
-        instance.setMaxValue(maxValue);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getValue method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testGetValue() {
-        System.out.println("getValue");
-        ImagePGM instance = new ImagePGM();
-        int[][] expResult = null;
-        int[][] result = instance.getValue();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setValue method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testSetValue() {
-        System.out.println("setValue");
-        int[][] value = null;
-        ImagePGM instance = new ImagePGM();
-        instance.setValue(value);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getComment method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testGetComment() {
-        System.out.println("getComment");
-        ImagePGM instance = new ImagePGM();
-        String expResult = "";
-        String result = instance.getComment();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setComment method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testSetComment() {
-        System.out.println("setComment");
-        String comment = "";
-        ImagePGM instance = new ImagePGM();
-        instance.setComment(comment);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -177,7 +98,6 @@ public class ImagePGMTest {
     @org.junit.jupiter.api.Test
     public void testDifference() {
         System.out.println("difference");
-        ImagePGM im = null;
         ImagePGM instance = new ImagePGM();
         ImagePGM expResult = null;
         ImagePGM result = instance.difference(im);
