@@ -133,8 +133,8 @@ public class ImagePGM {
      */
     public void to_binary(){
         int treshold = 128;
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
+        for (int i = 0; i < height-1; i++) {
+            for (int j = 0; j < width-1; j++) {
                 if (value[i][j]<treshold) {
                     value[i][j]=0;
                 } else {
