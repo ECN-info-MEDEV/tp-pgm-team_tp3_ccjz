@@ -46,20 +46,21 @@ public class TP3_MEDEV {
 
     public void readImage(String filePath, ImagePGM im) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            Scanner reader = new Scanner(new FileReader(filePath));
 
-            String format = reader.readLine();
-            String comment = reader.readLine();
+            String format = reader.nextLine();
+            String comment = reader.nextLine();
             im.setComment(comment);
-            String[] dimensions = reader.readLine().split(" ");
+            String[] dimensions = reader.nextLine().split("  ");
             im.setWidth(Integer.parseInt(dimensions[0]));
             im.setHeight(Integer.parseInt(dimensions[1]));
-            im.setMaxValue(Integer.parseInt(reader.readLine()));
+            im.setMaxValue(Integer.parseInt(reader.nextLine()));
             int[][] temp = new int[im.getWidth()][im.getHeight()];
             for (int i = 0; i < im.getHeight(); i++) {
-                String[] pixelValues = reader.readLine().split(" ");
+                //String[] pixelValues = reader.readLine().split("  ");
                 for (int j = 0; j < im.getWidth(); j++) {
-                    temp[i][j] = Integer.parseInt(pixelValues[j]);
+                    //temp[i][j] = Integer.parseInt(pixelValues[j]);
+                    temp[i][j]=reader.nextInt();
                 }
             }
             im.setValue(temp);
@@ -84,9 +85,9 @@ public class TP3_MEDEV {
 
         processor.readImage(inputFilePath, image);
         System.out.println("Image loaded successfully.");
-        //image.to_binary();
+        image.to_binary();
         // image.printHist(); 
-        //processor.writeImage(outputFilePath, image);
-        //System.out.println("Processed image saved successfully.");
+        processor.writeImage(outputFilePath, image);
+        System.out.println("Processed image saved successfully.");
     }
 }
