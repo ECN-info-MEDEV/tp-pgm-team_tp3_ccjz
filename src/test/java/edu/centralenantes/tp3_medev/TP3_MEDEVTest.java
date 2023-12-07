@@ -37,6 +37,13 @@ public class TP3_MEDEVTest {
         int[][] testImage = {{2, 2}, {3, 4}}; 
         ImagePGM Image1 = new ImagePGM(2, 2, 4, testImage);
         instance.writeImage(filePath, Image1);
+        ImagePGM readImage = new ImagePGM();
+        
+        instance.readImage(filePath, readImage);
+        assertArrayEquals(testImage, readImage.getValue()); 
+        assertEquals(2, readImage.getWidth());
+        assertEquals(2, readImage.getHeight());
+        assertEquals(4, readImage.getMaxValue());
     }
 
     /**
@@ -49,8 +56,8 @@ public class TP3_MEDEVTest {
         TP3_MEDEV test1 = new TP3_MEDEV();
         ImagePGM Image=new ImagePGM();
         test1.readImage(filePath,Image);
-        int expectedWidth = 50; 
-        int expectedHeight = 50; 
+        int expectedWidth = 512; 
+        int expectedHeight = 512; 
         int expectedMaxValue = 255; 
         assertEquals(expectedWidth, Image.getWidth());
         assertEquals(expectedHeight, Image.getHeight());
@@ -58,17 +65,7 @@ public class TP3_MEDEVTest {
 
     }
 
-    /**
-     * Test of main method, of class TP3_MEDEV.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        TP3_MEDEV.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+
     
 }
 
