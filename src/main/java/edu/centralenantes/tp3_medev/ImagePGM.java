@@ -4,6 +4,9 @@
  */
 package edu.centralenantes.tp3_medev;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class for images in bgm
  * @author chloe and jing
@@ -114,17 +117,21 @@ public class ImagePGM {
     /**
      *
      */
-    public void printHist(){
+    public void printHist() {
         int[] histogram = new int[256]; //init histogram of all possible grey values to all zero
+        List<Integer> lst_values = new ArrayList<Integer>();
         for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
                     int p = value[i][j]; //get pixel value
                     histogram[p]++;
+                    if (!lst_values.contains(p)){
+                        lst_values.add(p);
+                    }
             }
         }
         System.out.println("The histogram of the PGM image is :");
-        for (int i = 0; i < 256; i++) {
-            System.out.println("Value "+i+ "has frequency "+histogram[i]);
+        for (Integer i: lst_values) {
+            System.out.println("Value "+i+ " has frequency "+histogram[i]);
         }
     }  
     
