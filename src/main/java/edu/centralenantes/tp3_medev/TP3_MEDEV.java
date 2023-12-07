@@ -76,8 +76,11 @@ public class TP3_MEDEV {
         TP3_MEDEV processor = new TP3_MEDEV();
         ImagePGM image = new ImagePGM();
 
-        String inputFilePath = "C:/Users/23031/Documents/tp-pgm-team_tp3_ccjz/coins.pgm";
-        String outputFilePath = "C:/Users/23031/Documents/tp-pgm-team_tp3_ccjz/outputImage.pgm";
+        //String inputFilePath = "C:/Users/23031/Documents/tp-pgm-team_tp3_ccjz/coins.pgm";
+        //String outputFilePath = "C:/Users/23031/Documents/tp-pgm-team_tp3_ccjz/outputImage.pgm";
+
+        //String inputFilePath = "C:/Users/chloe/Documents/ImagesTestPGM/baboon.pgm";
+        //String outputFilePath = "C:/Users/chloe/Documents/ImagesTestPGM/output.pgm";
 
         processor.readImage(inputFilePath, image);
         System.out.println("Image loaded successfully.");
