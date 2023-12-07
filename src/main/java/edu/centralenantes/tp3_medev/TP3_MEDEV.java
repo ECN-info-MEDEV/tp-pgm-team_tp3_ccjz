@@ -51,10 +51,9 @@ public class TP3_MEDEV {
             String format = reader.nextLine();
             String comment = reader.nextLine();
             im.setComment(comment);
-            String[] dimensions = reader.nextLine().split("  ");
-            im.setWidth(Integer.parseInt(dimensions[0]));
-            im.setHeight(Integer.parseInt(dimensions[1]));
-            im.setMaxValue(Integer.parseInt(reader.nextLine()));
+            im.setWidth(reader.nextInt());
+            im.setHeight(reader.nextInt());
+            im.setMaxValue(reader.nextInt());
             int[][] temp = new int[im.getWidth()][im.getHeight()];
             for (int i = 0; i < im.getHeight(); i++) {
                 //String[] pixelValues = reader.readLine().split("  ");
