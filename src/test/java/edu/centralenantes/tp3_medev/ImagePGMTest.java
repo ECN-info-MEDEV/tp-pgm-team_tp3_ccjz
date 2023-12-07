@@ -16,57 +16,22 @@ import edu.centralenantes.tp3_medev.ImagePGM;
  */
 public class ImagePGMTest {
     
+    private static TP3_MEDEV processor;
+    private static String inputFilePath ;
+    private static String inputFilePath0 ;
+    
     public ImagePGMTest() {
     }
 
     @org.junit.jupiter.api.BeforeAll
     public static void setUpClass() throws Exception {
+        processor = new TP3_MEDEV();
+        inputFilePath = "C:/Users/chloe/Documents/ImagesTestPGM/ImagesTestPGM/test2.pgm";
+        inputFilePath0= "C:/Users/chloe/Documents/ImagesTestPGM/ImagesTestPGM/test.pgm";
     }
 
     @org.junit.jupiter.api.AfterAll
     public static void tearDownClass() throws Exception {
-    }
-    
-
-    /**
-     * Test of getHeight method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testGetHeight() {
-        System.out.println("getHeight");
-        ImagePGM instance = new ImagePGM();
-        int expResult = 0;
-        int result = instance.getHeight();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setHeight method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testSetHeight() {
-        System.out.println("setHeight");
-        int height = 0;
-        ImagePGM instance = new ImagePGM();
-        instance.setHeight(height);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getWidth method, of class ImagePGM.
-     */
-    @org.junit.jupiter.api.Test
-    public void testGetWidth() {
-        System.out.println("getWidth");
-        ImagePGM instance = new ImagePGM();
-        int expResult = 0;
-        int result = instance.getWidth();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -171,10 +136,26 @@ public class ImagePGMTest {
     public void testPrintHist() {
         System.out.println("printHist");
         ImagePGM instance = new ImagePGM();
+        processor.readImage(inputFilePath, instance);
         instance.printHist();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String res = null;
+        PrintStream originalOut = System.out;
+        try {
+            ByteArrayOutputStream os = new ByteArrayOutputStream(100);
+            PrintStream capture = new PrintStream(os);
+            // From this point on, everything printed to System.out will get captured
+            System.setOut(capture);
+            instance.printHist();
+            capture.flush();
+            res = os.toString();
+        } finally {
+            System.setOut(originalOut);
+        }
+        String ref = "\nThe histogram of the PGM image is :\n" +
+"Value 0 has frequency 9";
+        assertTrue(res.equals(ref));
     }
+ 
 
     /**
      * Test of to_binary method, of class ImagePGM.
@@ -183,9 +164,11 @@ public class ImagePGMTest {
     public void testTo_binary() {
         System.out.println("to_binary");
         ImagePGM instance = new ImagePGM();
+        processor.readImage(inputFilePath0, instance);
+        int[][] ref={{0,1,1}, {0,1,0}, {0,0,0}};
         instance.to_binary();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int[][] val=instance.getValue();
+        assertArrayEquals(ref,val);
     }
 
     /**
