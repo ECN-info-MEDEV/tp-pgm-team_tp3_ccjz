@@ -30,7 +30,6 @@ public class TP3_MEDEV {
             writer.write(im.getMaxValue() + "");
             writer.newLine();
 
-            // 写入图像数据
             for (int i = 0; i < im.getHeight(); i++) {
                 for (int j = 0; j < im.getWidth(); j++) {
                     writer.write(im.getValue()[i][j] + " ");
@@ -56,7 +55,6 @@ public class TP3_MEDEV {
             im.setWidth(Integer.parseInt(dimensions[0]));
             im.setHeight(Integer.parseInt(dimensions[1]));
             im.setMaxValue(Integer.parseInt(reader.readLine()));
-
             int[][] temp = new int[im.getWidth()][im.getHeight()];
             for (int i = 0; i < im.getHeight(); i++) {
                 String[] pixelValues = reader.readLine().split(" ");
@@ -78,13 +76,14 @@ public class TP3_MEDEV {
         TP3_MEDEV processor = new TP3_MEDEV();
         ImagePGM image = new ImagePGM();
 
-        String inputFilePath = "C:\\Users\\23031\\Documents\\tp-pgm-team_tp3_ccjz\\image.pgm";
-        String outputFilePath = "C:\\Users\\23031\\Documents\\tp-pgm-team_tp3_ccjz\\outputImage.pgm";
+        String inputFilePath = "C:/Users/23031/Documents/tp-pgm-team_tp3_ccjz/coins.pgm";
+        String outputFilePath = "C:/Users/23031/Documents/tp-pgm-team_tp3_ccjz/outputImage.pgm";
 
         processor.readImage(inputFilePath, image);
         System.out.println("Image loaded successfully.");
-        image.to_binary();
+        //image.to_binary();
         // image.printHist(); 
-        processor.writeImage(outputFilePath, image);
-        System.out.println("Processed image saved successfully.");
+        //processor.writeImage(outputFilePath, image);
+        //System.out.println("Processed image saved successfully.");
     }
+}
