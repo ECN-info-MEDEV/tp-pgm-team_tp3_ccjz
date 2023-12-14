@@ -17,6 +17,7 @@ public class ImagePGM {
     private int maxValue;
     private String comment;
     private int[][] value;
+    "test"
 
     /**
      *
