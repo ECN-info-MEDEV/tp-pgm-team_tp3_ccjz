@@ -5,6 +5,7 @@
 package edu.centralenantes.tp3_medev;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,7 +30,8 @@ public class TP3_MEDEVTest {
     /**
      * Test of writeImage method, of class TP3_MEDEV.
      */
-    @Test
+    //@Test
+    @Disabled
     public void testWriteImage() {
         System.out.println("writeImage");
         String filePath = "C:/Users/23031/Documents/tp-pgm-team_tp3_ccjz/write_test.pgm";
@@ -49,7 +51,8 @@ public class TP3_MEDEVTest {
     /**
      * Test of readImage method, of class TP3_MEDEV.
      */
-    @Test
+//    @Test
+    @Disabled
     public void testReadImage() {
         System.out.println("readImage");
         String filePath = "C:/Users/23031/Documents/tp-pgm-team_tp3_ccjz/baboon.pgm";
