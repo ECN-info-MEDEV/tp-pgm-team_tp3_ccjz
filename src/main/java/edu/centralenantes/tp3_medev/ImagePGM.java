@@ -131,7 +131,7 @@ public class ImagePGM {
         }
         System.out.println("The histogram of the PGM image is :");
         for (Integer i: lst_values) {
-            System.out.println("Value "+i+ " has frequency "+histogram[i]);
+            //System.out.println("Value "+i+ " has frequency "+histogram[i]);
         }
     }  
     

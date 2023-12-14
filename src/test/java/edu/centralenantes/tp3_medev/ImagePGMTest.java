@@ -74,7 +74,7 @@ public class ImagePGMTest {
         }
         String ref = "\nThe histogram of the PGM image is :\n" +
 "Value 0 has frequency 9";
-        assertTrue(res.equals(ref));
+        assertEquals(res, ref);
     }
  
 
