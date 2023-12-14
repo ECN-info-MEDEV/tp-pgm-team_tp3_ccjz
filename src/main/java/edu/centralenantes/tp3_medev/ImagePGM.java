@@ -158,7 +158,7 @@ public class ImagePGM {
      */
     public ImagePGM difference(ImagePGM im){
         ImagePGM diff = new ImagePGM();
-        if (this.height==im.height&this.width==im.width){
+        if (this.height==im.height&&this.width==im.width){
             diff.height=im.height;
             diff.width=im.width;
             diff.value=new int[height][width];
