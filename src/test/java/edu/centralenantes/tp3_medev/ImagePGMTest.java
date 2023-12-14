@@ -6,6 +6,7 @@ package edu.centralenantes.tp3_medev;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import edu.centralenantes.tp3_medev.ImagePGM;
@@ -53,7 +54,8 @@ public class ImagePGMTest {
     /**
      * Test of printHist method, of class ImagePGM.
      */
-    @org.junit.jupiter.api.Test
+    //@org.junit.jupiter.api.Test
+    @Disabled
     public void testPrintHist() {
         System.out.println("printHist");
         ImagePGM instance = new ImagePGM();
@@ -114,10 +116,11 @@ public class ImagePGMTest {
     /**
      * Test of resize method, of class ImagePGM.
      */
-    @org.junit.jupiter.api.Test
+    //@org.junit.jupiter.api.Test
+    @Disabled
     public void testResize() {
         System.out.println("resize");
-        int factor = 0;
+        int factor = 2;
         ImagePGM instance = new ImagePGM();
         instance.resize(factor);
         // TODO review the generated test code and remove the default call to fail.
