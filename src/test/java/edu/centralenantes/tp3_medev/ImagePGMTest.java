@@ -99,11 +99,16 @@ public class ImagePGMTest {
     public void testDifference() {
         System.out.println("difference");
         ImagePGM instance = new ImagePGM();
-        ImagePGM expResult = null;
-        ImagePGM result = instance.difference(im);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        processor.readImage(inputFilePath0, instance);
+        int height=instance.getHeight();
+        int width = instance.getWidth();
+        int maxValue=0;
+        int[][] value={{0,0,0},{0,0,0},{0,0,0}};
+        ImagePGM val = instance.difference(instance);
+        assertTrue(height.equals(val.getHeight()));
+        assertTrue(width.equals(val.getWidth()));
+        assertTrue(maxValue.equals(val.getMaxValue()));
+        assertTrue(value.equals(val.getValue()));
     }
 
     /**
@@ -118,9 +123,4 @@ public class ImagePGMTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
-    private void assertEquals(int i, int test) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }
