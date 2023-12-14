@@ -195,6 +195,9 @@ public class ImagePGM {
                     scaledImage[(i*2) + 1][(j*2) + 1] = value[i][j];
                 }
             }
+            this.width=width*factor;
+            this.height=height*factor;
+            this.value=scaledImage;
         }
         else if (factor==0.5){
            int[][] scaledImage = new int[height*factor][width*factor];
@@ -204,6 +207,9 @@ public class ImagePGM {
                     scaledImage[i/2][j/2] = value[i][j];
                 }
             } 
+            this.width=width*factor;
+            this.height=height*factor;
+            this.value=scaledImage;
         }
         else {
             throw new IllegalArgumentException("Wrong factor to resize the image : only 2 and 0.5 are possible.");
